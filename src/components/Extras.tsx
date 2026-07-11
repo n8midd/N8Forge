@@ -7,6 +7,7 @@ const extras = [
   "Monthly analytics reports",
   "Website maintenance",
   "Performance optimization",
+  "Custom QR Codes",
 ] as const;
 
 export function Extras() {
