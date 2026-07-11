@@ -6,7 +6,7 @@ export function Hero() {
     >
       <div className="hero-grain absolute inset-0" aria-hidden />
       <div
-        className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-off-white to-transparent"
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-surface to-transparent"
         aria-hidden
       />
 
