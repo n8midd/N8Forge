@@ -254,11 +254,11 @@ export function RequestForm() {
                   <a
                     key={item.label}
                     href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="font-medium text-charcoal transition-colors hover:text-primary"
-                    aria-label={`${item.label} (placeholder)`}
                   >
                     {item.label}
-                    <span className="ml-1 text-xs text-steel">(soon)</span>
                   </a>
                 ))}
               </dd>

@@ -2,10 +2,7 @@ export const contact = {
   email: "n8middleton@gmail.com",
   phone: "512-481-8028",
   phoneHref: "tel:+15124818028",
-  social: [
-    { label: "Instagram", href: "#" },
-    { label: "LinkedIn", href: "#" },
-  ],
+  social: [{ label: "Facebook", href: "https://www.facebook.com/n8forge" }],
 } as const;
 
 export const demos = [
