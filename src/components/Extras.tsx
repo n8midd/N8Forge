@@ -12,7 +12,7 @@ const extras = [
 
 export function Extras() {
   return (
-    <section id="extras" className="scroll-mt-8 bg-off-white py-20 md:py-28">
+    <section id="extras" className="scroll-mt-8 bg-surface py-20 md:py-28">
       <div className="mx-auto max-w-6xl px-6 md:px-8">
         <h2 className="font-display text-3xl font-bold tracking-tight text-charcoal md:text-4xl">
           Extras

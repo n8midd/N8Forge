@@ -192,7 +192,7 @@ export function RequestForm() {
   );
 
   return (
-    <section id="contact" className="scroll-mt-8 bg-surface py-20 text-charcoal md:py-28">
+    <section id="contact" className="scroll-mt-8 bg-off-white py-20 text-charcoal md:py-28">
       <div className="mx-auto grid max-w-6xl gap-14 px-6 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.25fr)] md:gap-16 md:px-8">
         <div>
           <h2 className="font-display text-3xl font-bold tracking-tight text-charcoal md:text-4xl">

@@ -2,7 +2,7 @@ import { demos } from "../lib/contact";
 
 export function Demos() {
   return (
-    <section id="work" className="scroll-mt-8 bg-surface py-20 md:py-28">
+    <section id="work" className="scroll-mt-8 bg-off-white py-20 md:py-28">
       <div className="mx-auto max-w-6xl px-6 md:px-8">
         <h2 className="font-display text-3xl font-bold tracking-tight text-charcoal md:text-4xl">
           Work

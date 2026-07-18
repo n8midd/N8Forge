@@ -23,6 +23,16 @@ export const demos = [
   },
 ] as const;
 
+export const liveCustomers = [
+  {
+    name: "Lux Massage Therapy",
+    href: "https://nacluxmassage.com/",
+    location: "Nacogdoches, TX",
+    description:
+      "Personalized therapeutic massage site for Valarie Middleton, LMT — booking-ready and built for local clients",
+  },
+] as const;
+
 export type PackageInterest =
   | "Starter Website"
   | "Professional"
