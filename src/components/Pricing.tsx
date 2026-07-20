@@ -35,14 +35,15 @@ const careFeatures = [
 
 export function Pricing() {
   return (
-    <section id="pricing" className="scroll-mt-8 bg-off-white py-20 md:py-28">
+    <section id="pricing" className="scroll-mt-8 bg-surface py-20 md:py-28">
       <div className="mx-auto max-w-6xl px-6 md:px-8">
         <h2 className="font-display text-3xl font-bold tracking-tight text-charcoal md:text-4xl">
           Pricing
         </h2>
-        <p className="mt-3 max-w-xl text-steel">
-          Choose a website package. Add Monthly Care for ongoing updates,
-          hosting, and support.
+        <p className="mt-3 max-w-2xl text-steel">
+          <span className="font-semibold text-charcoal">Websites start at $500.</span>{" "}
+          Starter covers the essentials for most local service businesses. Choose
+          Professional when you need booking, reviews, analytics, or more pages.
         </p>
 
         <div className="mt-12 grid gap-10 border-t border-steel-light/60 pt-10 md:grid-cols-2 md:gap-12">
@@ -66,7 +67,7 @@ export function Pricing() {
                 href="#contact"
                 className="mt-8 inline-flex w-fit border border-charcoal px-4 py-2 text-sm font-semibold text-charcoal transition-colors hover:border-ember hover:bg-ember hover:text-off-white"
               >
-                Get started
+                Request a Free Website Plan
               </a>
             </article>
           ))}
@@ -118,7 +119,7 @@ export function Pricing() {
             href="#contact"
             className="mt-8 inline-flex w-fit border border-charcoal px-4 py-2 text-sm font-semibold text-charcoal transition-colors hover:border-ember hover:bg-ember hover:text-off-white"
           >
-            Add care to my project
+            Request a Free Website Plan
           </a>
         </div>
       </div>

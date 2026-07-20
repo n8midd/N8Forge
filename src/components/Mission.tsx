@@ -8,7 +8,7 @@ const paragraphs = [
 
 export function Mission() {
   return (
-    <section id="mission" className="scroll-mt-8 bg-surface py-20 md:py-28">
+    <section id="mission" className="scroll-mt-8 bg-off-white py-20 md:py-28">
       <div className="mx-auto max-w-6xl px-6 md:px-8">
         <p className="text-sm font-semibold uppercase tracking-[0.12em] text-ember">
           About

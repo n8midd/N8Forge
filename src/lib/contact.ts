@@ -5,132 +5,47 @@ export const contact = {
   social: [{ label: "Facebook", href: "https://www.facebook.com/n8forge" }],
 } as const;
 
-export const demos = [
-  {
-    name: "Pool Service",
-    href: "https://demo-pool-service-company.vercel.app",
-    description: "Service company site with clear calls to action",
+export const owner = {
+  name: "Nathan Middleton",
+  location: "Nacogdoches, TX",
+  experience: "18 years of professional software experience",
+  tagline:
+    "You work directly with me from the first conversation through launch — no call centers, no ticket queues.",
+  ...contact,
+} as const;
+
+export const caseStudyLux = {
+  client: "Lux Massage Therapy",
+  owner: "Valarie Middleton, LMT",
+  location: "Nacogdoches, TX",
+  beforeUrl: "https://mysite.vagaro.com/luxmassagetherapy1",
+  afterUrl: "https://nacluxmassage.com/",
+  need:
+    "Valarie relied on a generic Vagaro booking page — template look, limited branding, and no real home for her business online.",
+  built:
+    "A custom site at nacluxmassage.com with branded design, mobile-first layout, clear services, and direct Book on Vagaro integration.",
+  booking:
+    "Online booking still runs through Vagaro — the platform Valarie already uses — but it feels native on the new site. Clients browse services, learn about Lux, and book without confusion.",
+  testimonial: {
+    quote:
+      "Nathan took our Vagaro page and turned it into a website that actually feels like Lux Massage Therapy. Clients can learn about our services, find us easily on mobile, and book without confusion. It looks professional, and I finally have something I'm proud to share.",
+    author: "Valarie Middleton, LMT",
+    business: "Lux Massage Therapy",
   },
-  {
-    name: "BBQ Business",
-    href: "https://demo-bbq-business.vercel.app",
-    description: "Food business site built for local customers",
+  screenshots: {
+    beforeDesktop: "/case-studies/lux/before-desktop.png",
+    beforeMobile: "/case-studies/lux/before-mobile.png",
+    afterDesktop: "/case-studies/lux/after-desktop.png",
+    afterMobile: "/case-studies/lux/after-mobile.png",
   },
-  {
-    name: "Lawn Care",
-    href: "https://demo-lawn-care-business.vercel.app",
-    description: "Outdoor services site with booking-ready layout",
-  },
-] as const;
-
-export const liveCustomers = [
-  {
-    name: "Lux Massage Therapy",
-    href: "https://nacluxmassage.com/",
-    location: "Nacogdoches, TX",
-    description:
-      "Personalized therapeutic massage site for Valarie Middleton, LMT — booking-ready and built for local clients",
-  },
-] as const;
-
-export type PackageInterest =
-  | "Starter Website"
-  | "Professional"
-  | "Not sure yet";
-
-export type CarePlanInterest =
-  | "Yes — with my package"
-  | "No thanks"
-  | "Not sure yet";
-
-export const pageOptions = [
-  "Home",
-  "About",
-  "Services",
-  "Pricing",
-  "Gallery / Portfolio",
-  "Blog",
-  "Contact",
-  "FAQ",
-  "Testimonials / Reviews",
-  "Booking / Appointments",
-] as const;
-
-export const featureOptions = [
-  "Contact form",
-  "Online booking",
-  "Google Maps",
-  "Photo gallery",
-  "Blog",
-  "Customer reviews",
-  "Analytics",
-  "SEO basics",
-  "Speed optimization",
-  "Multi-location pages",
-] as const;
-
-export const integrationOptions = [
-  "Google Business Profile",
-  "Google Analytics",
-  "Email marketing (Mailchimp, etc.)",
-  "Payment processing (Stripe, Square, etc.)",
-  "Scheduling (Calendly, etc.)",
-  "CRM",
-  "Social media feeds",
-  "None / not sure",
-] as const;
-
-export type ImageStatus =
-  | "I have photos ready"
-  | "I need help with photos"
-  | "Mix of both"
-  | "Not sure yet";
-
-export type TextStatus =
-  | "I have copy written"
-  | "I need help writing copy"
-  | "Mix of both"
-  | "Not sure yet";
-
-export type DomainStatus =
-  | "I already own a domain"
-  | "I need to buy a domain"
-  | "Not sure yet";
-
-export type ExistingSiteStatus =
-  | "No existing website"
-  | "Yes — redesign / rebuild"
-  | "Yes — keep and improve";
-
-export type Timeframe =
-  | "ASAP"
-  | "2–4 weeks"
-  | "1–2 months"
-  | "Flexible / exploring";
+} as const;
 
 export type IntakeValues = {
   name: string;
   business: string;
   email: string;
   phone: string;
-  packageInterest: PackageInterest;
-  carePlanInterest: CarePlanInterest;
-  businessDescription: string;
-  pages: string[];
-  customPages: string;
-  pageNotes: string;
-  imageStatus: ImageStatus;
-  textStatus: TextStatus;
-  brandNotes: string;
-  features: string[];
-  integrations: string[];
-  otherIntegrations: string;
-  domainStatus: DomainStatus;
-  domainName: string;
-  existingSiteStatus: ExistingSiteStatus;
-  existingSiteUrl: string;
-  timeframe: Timeframe;
-  additionalNotes: string;
+  need: string;
 };
 
 export const initialIntake: IntakeValues = {
@@ -138,77 +53,23 @@ export const initialIntake: IntakeValues = {
   business: "",
   email: "",
   phone: "",
-  packageInterest: "Not sure yet",
-  carePlanInterest: "Not sure yet",
-  businessDescription: "",
-  pages: ["Home", "About", "Services", "Contact"],
-  customPages: "",
-  pageNotes: "",
-  imageStatus: "Not sure yet",
-  textStatus: "Not sure yet",
-  brandNotes: "",
-  features: ["Contact form", "SEO basics"],
-  integrations: [],
-  otherIntegrations: "",
-  domainStatus: "Not sure yet",
-  domainName: "",
-  existingSiteStatus: "No existing website",
-  existingSiteUrl: "",
-  timeframe: "Flexible / exploring",
-  additionalNotes: "",
+  need: "",
 };
 
-function listOrNone(items: string[]): string {
-  return items.length ? items.join(", ") : "(none)";
-}
-
 export function formatIntakeSubject(values: IntakeValues): string {
-  return `Website intake — ${values.business || values.name || "New inquiry"}`;
+  return `Website plan request — ${values.business || values.name || "New inquiry"}`;
 }
 
 export function formatIntakeBody(values: IntakeValues): string {
   return [
-    "=== CONTACT ===",
+    "=== WEBSITE PLAN REQUEST ===",
     `Name: ${values.name}`,
     `Business: ${values.business}`,
     `Email: ${values.email}`,
     `Phone: ${values.phone || "(none)"}`,
-    `Package interest: ${values.packageInterest}`,
-    `Monthly Care add-on: ${values.carePlanInterest}${
-      values.packageInterest === "Starter Website"
-        ? " ($50/mo if Starter)"
-        : values.packageInterest === "Professional"
-          ? " ($150/mo if Professional)"
-          : " ($50/mo Starter · $150/mo Professional)"
-    }`,
-    `About the business: ${values.businessDescription || "(none)"}`,
     "",
-    "=== PAGES ===",
-    `Selected: ${listOrNone(values.pages)}`,
-    `Custom pages: ${values.customPages || "(none)"}`,
-    `Page notes: ${values.pageNotes || "(none)"}`,
-    "",
-    "=== CONTENT ===",
-    `Images: ${values.imageStatus}`,
-    `Text / copy: ${values.textStatus}`,
-    `Brand / logo notes: ${values.brandNotes || "(none)"}`,
-    "",
-    "=== FEATURES ===",
-    listOrNone(values.features),
-    "",
-    "=== INTEGRATIONS ===",
-    listOrNone(values.integrations),
-    `Other: ${values.otherIntegrations || "(none)"}`,
-    "",
-    "=== DOMAIN & EXISTING SITE ===",
-    `Domain: ${values.domainStatus}`,
-    `Domain name: ${values.domainName || "(none)"}`,
-    `Existing site: ${values.existingSiteStatus}`,
-    `Existing URL: ${values.existingSiteUrl || "(none)"}`,
-    "",
-    "=== TIMELINE ===",
-    `Timeframe: ${values.timeframe}`,
-    `Additional notes: ${values.additionalNotes || "(none)"}`,
+    "What they need:",
+    values.need || "(none)",
   ].join("\n");
 }
 
@@ -222,6 +83,7 @@ export function isValidIntake(values: unknown): values is IntakeValues {
     v.business.trim().length > 0 &&
     typeof v.email === "string" &&
     v.email.trim().length > 0 &&
-    Array.isArray(v.pages)
+    typeof v.need === "string" &&
+    v.need.trim().length > 0
   );
 }

@@ -1,4 +1,4 @@
-import { contact } from "../lib/contact";
+import { owner } from "../lib/contact";
 import { Logo } from "./Logo";
 
 export function Footer() {
@@ -11,16 +11,19 @@ export function Footer() {
           <a href="#top" aria-label="N8Forge home" className="inline-block">
             <Logo size="footer" />
           </a>
-          <p className="mt-4 text-sm">
+          <p className="mt-4 text-sm text-off-white">
+            {owner.name} · {owner.location}
+          </p>
+          <p className="mt-2 text-sm">
             <a
-              href={`mailto:${contact.email}`}
+              href={`mailto:${owner.email}`}
               className="transition-colors hover:text-ember"
             >
-              {contact.email}
+              {owner.email}
             </a>
             <span className="mx-2 text-steel">·</span>
-            <a href={contact.phoneHref} className="transition-colors hover:text-ember">
-              {contact.phone}
+            <a href={owner.phoneHref} className="transition-colors hover:text-ember">
+              {owner.phone}
             </a>
           </p>
         </div>

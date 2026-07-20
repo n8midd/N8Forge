@@ -6,8 +6,7 @@ import { Logo } from "./Logo";
 const links = [
   { href: "#mission", label: "Mission" },
   { href: "#pricing", label: "Pricing" },
-  { href: "#clients", label: "Clients" },
-  { href: "#work", label: "Work" },
+  { href: "#case-study", label: "Case study" },
   { href: "#extras", label: "Extras" },
   { href: "#contact", label: "Contact" },
 ] as const;
@@ -36,7 +35,7 @@ export function Header() {
             href="#contact"
             className="bg-ember px-4 py-2 text-sm font-semibold text-off-white transition-colors hover:bg-ember-deep"
           >
-            Request a site
+            Request a Free Website Plan
           </a>
         </nav>
 
@@ -86,7 +85,7 @@ export function Header() {
                 className="mt-1 inline-block bg-ember px-4 py-2 text-sm font-semibold text-off-white"
                 onClick={() => setOpen(false)}
               >
-                Request a site
+                Request a Free Website Plan
               </a>
             </li>
           </ul>
