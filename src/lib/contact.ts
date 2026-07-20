@@ -14,6 +14,24 @@ export const owner = {
   ...contact,
 } as const;
 
+export const foundingClientPackage = {
+  name: "East Texas Founding Client Package",
+  price: "$400",
+  spotsTotal: 3,
+  features: [
+    "Custom website with up to five pages",
+    "Mobile-friendly design",
+    "Contact, booking, or estimate-request form",
+    "Basic local SEO",
+    "Help writing content and selecting photos",
+    "Delivered in approximately 10 business days",
+    "Affordable hosting and maintenance starting at $49/month",
+  ],
+  maintenance: "$49/month",
+  terms:
+    "First three clients receive this $400 launch price in exchange for an honest testimonial and permission to feature the project.",
+} as const;
+
 export const caseStudyLux = {
   client: "Lux Massage Therapy",
   owner: "Valarie Middleton, LMT",

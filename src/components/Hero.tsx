@@ -21,6 +21,13 @@ export function Hero() {
           Professional websites built around your business, with straightforward
           pricing and personal local support.
         </p>
+        <p className="animate-rise animate-rise-delay-2 mt-3 max-w-xl text-sm text-white/75">
+          Limited founding offer: custom websites from{" "}
+          <a href="#pricing" className="font-semibold text-white underline-offset-2 hover:text-ember hover:underline">
+            $400
+          </a>{" "}
+          for the first three East Texas clients.
+        </p>
         <div className="animate-rise animate-rise-delay-3 mt-8 flex flex-wrap items-center gap-4">
           <a
             href="#contact"

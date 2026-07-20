@@ -127,6 +127,14 @@ export function RequestForm() {
             </div>
           ) : (
             <div className="space-y-4">
+              <p className="text-sm text-steel">
+                Interested in the{" "}
+                <span className="font-medium text-charcoal">
+                  Founding Client Package ($400)
+                </span>
+                ? Mention it in &ldquo;What do you need?&rdquo; — limited to the
+                first three clients.
+              </p>
               <div className="grid gap-4 sm:grid-cols-2">
                 <label className="block text-sm">
                   <span className="mb-1.5 block font-medium text-charcoal">Name</span>
