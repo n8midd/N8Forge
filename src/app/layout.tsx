@@ -18,7 +18,7 @@ const sourceSans = Source_Sans_3({
 export const metadata: Metadata = {
   title: "N8Forge — Custom Websites for East Texas Service Businesses",
   description:
-    "N8Forge builds custom websites for East Texas service businesses. Straightforward pricing from $500, personal local support from Nathan Middleton in Nacogdoches, TX.",
+    "N8Forge builds custom websites for East Texas service businesses. Straightforward pricing from $400, personal local support from Nathan Middleton in Nacogdoches, TX.",
   icons: {
     icon: "/logo.png",
     apple: "/logo.png",

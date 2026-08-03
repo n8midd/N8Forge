@@ -22,11 +22,14 @@ export function Hero() {
           pricing and personal local support.
         </p>
         <p className="animate-rise animate-rise-delay-2 mt-3 max-w-xl text-sm text-white/75">
-          Limited founding offer: custom websites from{" "}
-          <a href="#pricing" className="font-semibold text-white underline-offset-2 hover:text-ember hover:underline">
+          Packages from{" "}
+          <a
+            href="#pricing"
+            className="font-semibold text-white underline-offset-2 hover:text-ember hover:underline"
+          >
             $400
-          </a>{" "}
-          for the first three East Texas clients.
+          </a>
+          — Starter, Growth, and Professional.
         </p>
         <div className="animate-rise animate-rise-delay-3 mt-8 flex flex-wrap items-center gap-4">
           <a

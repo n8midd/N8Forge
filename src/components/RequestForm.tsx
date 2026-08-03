@@ -128,12 +128,12 @@ export function RequestForm() {
           ) : (
             <div className="space-y-4">
               <p className="text-sm text-steel">
-                Interested in the{" "}
+                Looking at{" "}
                 <span className="font-medium text-charcoal">
-                  Founding Client Package ($400)
+                  Starter ($400), Growth ($750), or Professional ($1,000)
                 </span>
-                ? Mention it in &ldquo;What do you need?&rdquo; — limited to the
-                first three clients.
+                ? Mention which package you prefer in &ldquo;What do you
+                need?&rdquo;
               </p>
               <div className="grid gap-4 sm:grid-cols-2">
                 <label className="block text-sm">
