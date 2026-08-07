@@ -1,28 +1,41 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
+import { CTA } from "../lib/contact";
 import { Logo } from "./Logo";
 
-const links = [
-  { href: "#mission", label: "Mission" },
-  { href: "#pricing", label: "Pricing" },
-  { href: "#case-study", label: "Case study" },
-  { href: "#extras", label: "Extras" },
-  { href: "#contact", label: "Contact" },
+type HeaderProps = {
+  variant?: "hero" | "page";
+};
+
+const homeLinks = [
+  { href: "/#work", label: "Work" },
+  { href: "/#how-it-works", label: "How it works" },
+  { href: "/#pricing", label: "Pricing" },
+  { href: "/#faq", label: "FAQ" },
+  { href: "/#contact", label: "Contact" },
 ] as const;
 
-export function Header() {
+export function Header({ variant = "hero" }: HeaderProps) {
   const [open, setOpen] = useState(false);
+  const isHero = variant === "hero";
 
   return (
-    <header className="absolute inset-x-0 top-0 z-50">
+    <header
+      className={
+        isHero
+          ? "absolute inset-x-0 top-0 z-50"
+          : "sticky top-0 z-50 border-b border-steel-light/40 bg-primary"
+      }
+    >
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 md:px-8">
-        <a href="#top" className="transition-opacity hover:opacity-90" aria-label="N8Forge home">
+        <Link href="/" className="transition-opacity hover:opacity-90" aria-label="N8Forge home">
           <Logo size="nav" priority />
-        </a>
+        </Link>
 
-        <nav className="hidden items-center gap-8 md:flex" aria-label="Primary">
-          {links.map((link) => (
+        <nav className="hidden items-center gap-6 lg:flex" aria-label="Primary">
+          {homeLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
@@ -32,16 +45,16 @@ export function Header() {
             </a>
           ))}
           <a
-            href="#contact"
+            href={CTA.href}
             className="bg-ember px-4 py-2 text-sm font-semibold text-off-white transition-colors hover:bg-ember-deep"
           >
-            Request a Free Website Plan
+            {CTA.label}
           </a>
         </nav>
 
         <button
           type="button"
-          className="inline-flex items-center justify-center text-off-white md:hidden"
+          className="inline-flex items-center justify-center text-off-white lg:hidden"
           aria-expanded={open}
           aria-controls="mobile-nav"
           onClick={() => setOpen((v) => !v)}
@@ -64,11 +77,11 @@ export function Header() {
       {open ? (
         <nav
           id="mobile-nav"
-          className="border-t border-white/10 bg-primary/95 px-6 py-4 backdrop-blur md:hidden"
+          className="border-t border-white/10 bg-primary/95 px-6 py-4 backdrop-blur lg:hidden"
           aria-label="Mobile"
         >
           <ul className="flex flex-col gap-3">
-            {links.map((link) => (
+            {homeLinks.map((link) => (
               <li key={link.href}>
                 <a
                   href={link.href}
@@ -81,11 +94,11 @@ export function Header() {
             ))}
             <li>
               <a
-                href="#contact"
+                href={CTA.href}
                 className="mt-1 inline-block bg-ember px-4 py-2 text-sm font-semibold text-off-white"
                 onClick={() => setOpen(false)}
               >
-                Request a Free Website Plan
+                {CTA.label}
               </a>
             </li>
           </ul>

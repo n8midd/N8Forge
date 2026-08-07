@@ -17,18 +17,21 @@ const sourceSans = Source_Sans_3({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://n8-forge.vercel.app"),
-  title: "N8Forge — Custom Websites for East Texas Service Businesses",
+  title: {
+    default: "N8Forge — Websites That Help East Texas Businesses Get Customers",
+    template: "%s | N8Forge",
+  },
   description:
-    "N8Forge builds custom websites for East Texas service businesses. Straightforward pricing from $400, personal local support from Nathan Middleton in Nacogdoches, TX.",
+    "Custom websites for East Texas service businesses in Nacogdoches. Flat pricing from $400. Work directly with the developer. Free website game plan — no obligation.",
   applicationName: "N8Forge",
   icons: {
     icon: "/logo.png",
     apple: "/logo.png",
   },
   openGraph: {
-    title: "N8Forge — Custom Websites for East Texas Service Businesses",
+    title: "N8Forge — More Calls, Bookings & Customers for East Texas Businesses",
     description:
-      "Custom websites for East Texas service businesses. Straightforward pricing from $400, with personal local support.",
+      "Custom-built in Nacogdoches. Pricing from $400 without agency overhead. Free website game plan with structure, features, and flat rate.",
     url: "https://n8-forge.vercel.app",
     siteName: "N8Forge",
     locale: "en_US",
@@ -36,9 +39,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "N8Forge — Custom Websites for East Texas Service Businesses",
+    title: "N8Forge — East Texas websites that get results",
     description:
-      "Custom websites for East Texas service businesses. Straightforward pricing from $400, with personal local support.",
+      "Custom sites from $400. Local in Nacogdoches. Free website game plan — no obligation.",
   },
 };
 

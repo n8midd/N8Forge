@@ -2,7 +2,7 @@ import Image from "next/image";
 import { caseStudyLux } from "../lib/contact";
 
 export function CaseStudy() {
-  const { screenshots, testimonial } = caseStudyLux;
+  const { screenshots, testimonial, results } = caseStudyLux;
 
   return (
     <section id="case-study" className="scroll-mt-8 bg-off-white py-20 md:py-28">
@@ -50,6 +50,23 @@ export function CaseStudy() {
               </a>
             </p>
           </div>
+        </div>
+
+        <div className="mt-14 border border-steel-light/60 bg-white p-6 md:p-8">
+          <h3 className="font-display text-lg font-semibold text-charcoal">
+            Results
+          </h3>
+          <p className="mt-2 max-w-2xl text-sm text-steel">
+            Documented outcomes only — not invented traffic or revenue numbers.
+          </p>
+          <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+            {results.map((item) => (
+              <li key={item} className="flex gap-2 text-sm text-charcoal">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 bg-ember" aria-hidden />
+                {item}
+              </li>
+            ))}
+          </ul>
         </div>
 
         <div className="mt-14">

@@ -1,3 +1,5 @@
+import { CTA } from "../lib/contact";
+
 const websiteTiers = [
   {
     name: "Starter Website",
@@ -57,17 +59,19 @@ const careFeatures = [
 
 export function Pricing() {
   return (
-    <section id="pricing" className="scroll-mt-8 bg-surface py-20 md:py-28">
+    <section id="pricing" className="scroll-mt-8 bg-off-white py-20 md:py-28">
       <div className="mx-auto max-w-6xl px-6 md:px-8">
         <h2 className="font-display text-3xl font-bold tracking-tight text-charcoal md:text-4xl">
           Pricing
         </h2>
         <p className="mt-3 max-w-2xl text-steel">
           <span className="font-semibold text-charcoal">
-            Websites start at $400.
+            Affordable websites built specifically for small East Texas businesses
+            — without agency overhead.
           </span>{" "}
-          Choose Starter for a solid online presence, Growth for more leads, or
-          Professional when you need booking and a fuller customer experience.
+          Clear flat rates from $400. Choose Starter for a solid presence, Growth
+          for more leads, or Professional when you need booking and a fuller
+          experience.
         </p>
 
         <div className="mt-12 grid gap-10 border-t border-steel-light/60 pt-10 md:grid-cols-3 md:gap-8">
@@ -84,9 +88,7 @@ export function Pricing() {
                   <li key={feature} className="flex gap-2">
                     <span
                       className={`mt-1.5 h-1.5 w-1.5 shrink-0 ${
-                        feature.endsWith("plus:")
-                          ? "bg-transparent"
-                          : "bg-ember"
+                        feature.endsWith("plus:") ? "bg-transparent" : "bg-ember"
                       }`}
                       aria-hidden
                     />
@@ -110,7 +112,7 @@ export function Pricing() {
                 href="#contact"
                 className="mt-8 inline-flex w-fit border border-charcoal px-4 py-2 text-sm font-semibold text-charcoal transition-colors hover:border-ember hover:bg-ember hover:text-off-white"
               >
-                Request a Free Website Plan
+                {CTA.label}
               </a>
             </article>
           ))}
@@ -124,8 +126,8 @@ export function Pricing() {
             Monthly Care
           </h3>
           <p className="mt-3 max-w-2xl text-steel">
-            Pair care with your website package for predictable upkeep. Hosting
-            and maintenance start at{" "}
+            Optional hosting and upkeep so you stay online without learning the
+            tech. Starts at{" "}
             <span className="font-semibold text-charcoal">$49/month</span>.
           </p>
 
@@ -142,7 +144,7 @@ export function Pricing() {
             href="#contact"
             className="mt-8 inline-flex w-fit border border-charcoal px-4 py-2 text-sm font-semibold text-charcoal transition-colors hover:border-ember hover:bg-ember hover:text-off-white"
           >
-            Request a Free Website Plan
+            {CTA.label}
           </a>
         </div>
       </div>

@@ -18,8 +18,8 @@ export function Extras() {
           Extras
         </h2>
         <p className="mt-3 max-w-2xl text-steel">
-          The website often leads to additional services. These create recurring
-          revenue and deeper client relationships.
+          Need more than a website? I can also help you get found locally, manage
+          your site, improve performance, and turn more visitors into customers.
         </p>
 
         <ul className="mt-12 grid gap-x-10 gap-y-4 sm:grid-cols-2">

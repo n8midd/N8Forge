@@ -1,7 +1,13 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-import { contact, initialIntake, owner, type IntakeValues } from "../lib/contact";
+import {
+  contact,
+  CTA,
+  initialIntake,
+  owner,
+  type IntakeValues,
+} from "../lib/contact";
 
 const fieldClass =
   "w-full border border-steel-light bg-white px-3 py-2.5 text-charcoal outline-none transition-colors placeholder:text-steel focus:border-primary-light";
@@ -50,17 +56,38 @@ export function RequestForm() {
       <div className="mx-auto grid max-w-6xl gap-14 px-6 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.15fr)] md:gap-16 md:px-8">
         <div>
           <h2 className="font-display text-3xl font-bold tracking-tight text-charcoal md:text-4xl">
-            Request a Free Website Plan
+            {CTA.label}
           </h2>
-          <p className="mt-3 max-w-md text-steel">
-            Tell me a little about your business and what you need. I&apos;ll
-            follow up personally using the contact details you provide.
+          <p className="mt-3 max-w-md text-steel">{CTA.deliverable}</p>
+          <p className="mt-3 max-w-md text-sm font-medium text-charcoal">
+            {CTA.response}
           </p>
+
+          <div className="mt-8 flex flex-wrap gap-3">
+            <a
+              href={contact.phoneHref}
+              className="border border-charcoal px-4 py-2 text-sm font-semibold text-charcoal transition-colors hover:border-ember hover:bg-ember hover:text-white"
+            >
+              Call {owner.name.split(" ")[0]}
+            </a>
+            <a
+              href={contact.smsHref}
+              className="border border-charcoal px-4 py-2 text-sm font-semibold text-charcoal transition-colors hover:border-ember hover:bg-ember hover:text-white"
+            >
+              Text {owner.name.split(" ")[0]}
+            </a>
+            <a
+              href={`mailto:${contact.email}`}
+              className="border border-charcoal px-4 py-2 text-sm font-semibold text-charcoal transition-colors hover:border-ember hover:bg-ember hover:text-white"
+            >
+              Email
+            </a>
+          </div>
 
           <dl className="mt-10 space-y-5 text-sm">
             <div>
               <dt className="text-steel">{owner.name}</dt>
-              <dd className="mt-1 text-charcoal">{owner.location}</dd>
+              <dd className="mt-1 text-charcoal">{owner.serviceArea}</dd>
             </div>
             <div>
               <dt className="text-steel">Email</dt>
@@ -84,22 +111,6 @@ export function RequestForm() {
                 </a>
               </dd>
             </div>
-            <div>
-              <dt className="text-steel">Social</dt>
-              <dd className="mt-1">
-                {contact.social.map((item) => (
-                  <a
-                    key={item.label}
-                    href={item.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="font-medium text-charcoal transition-colors hover:text-primary"
-                  >
-                    {item.label}
-                  </a>
-                ))}
-              </dd>
-            </div>
           </dl>
         </div>
 
@@ -113,7 +124,7 @@ export function RequestForm() {
                 Thanks — request received
               </h3>
               <p className="mt-3 max-w-md text-steel">
-                I&apos;ll review your details and follow up at{" "}
+                {CTA.response} I&apos;ll follow up at{" "}
                 <span className="font-medium text-charcoal">{values.email}</span>
                 {values.phone ? (
                   <>
@@ -208,7 +219,7 @@ export function RequestForm() {
                 disabled={submitting}
                 className="bg-ember px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-ember-deep disabled:cursor-not-allowed disabled:opacity-60"
               >
-                {submitting ? "Sending…" : "Request a Free Website Plan"}
+                {submitting ? "Sending…" : CTA.label}
               </button>
             </div>
           )}

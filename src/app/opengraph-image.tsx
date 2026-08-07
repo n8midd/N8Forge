@@ -70,6 +70,7 @@ export default function OpenGraphImage() {
           }}
         >
           n8-forge.vercel.app
+          · Nacogdoches, TX
         </div>
       </div>
     ),

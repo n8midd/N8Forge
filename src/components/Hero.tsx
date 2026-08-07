@@ -14,40 +14,39 @@ export function Hero() {
         <p className="animate-rise font-display text-sm font-semibold uppercase tracking-[0.14em] text-white/70">
           N8Forge
         </p>
-        <h1 className="animate-rise animate-rise-delay-1 mt-3 max-w-3xl font-display text-4xl font-bold leading-tight tracking-tight text-off-white sm:text-5xl md:mt-4 md:text-6xl">
-          Custom Websites for East Texas Service Businesses
+        <h1 className="animate-rise animate-rise-delay-1 mt-3 max-w-3xl font-display text-3xl font-bold leading-tight tracking-tight text-off-white sm:text-5xl md:mt-4 md:text-6xl">
+          Websites That Help East Texas Businesses Get More Calls, Bookings &amp;
+          Customers
         </h1>
         <p className="animate-rise animate-rise-delay-2 mt-5 max-w-xl text-base leading-relaxed text-white/85 md:text-lg">
-          Professional websites built around your business, with straightforward
-          pricing and personal local support.
+          Custom-built locally in Nacogdoches. Straightforward pricing starting at
+          $400. Work directly with the developer from start to finish.
         </p>
         <p className="animate-rise animate-rise-delay-2 mt-3 max-w-xl text-sm text-white/75">
-          Packages from{" "}
-          <a
-            href="#pricing"
-            className="font-semibold text-white underline-offset-2 hover:text-ember hover:underline"
-          >
-            $400
-          </a>
-          — Starter, Growth, and Professional.
+          Affordable websites built specifically for small East Texas businesses —
+          without agency overhead.
         </p>
         <div className="animate-rise animate-rise-delay-3 mt-8 flex flex-wrap items-center gap-4">
           <a
             href="#contact"
             className="bg-ember px-6 py-3 text-sm font-semibold text-off-white transition-colors hover:bg-ember-deep"
           >
-            Request a Free Website Plan
+            Get Your Free Website Game Plan
           </a>
           <a
-            href="#case-study"
+            href="#work"
             className="group text-sm font-semibold text-off-white transition-colors hover:text-ember"
           >
-            See the Lux case study
+            See my work
             <span className="ml-1 inline-block transition-transform group-hover:translate-x-0.5">
               →
             </span>
           </a>
         </div>
+        <p className="animate-rise animate-rise-delay-3 mt-4 max-w-lg text-sm text-white/70">
+          I&apos;ll review your business and send you a recommended site structure,
+          features, and flat-rate price — no obligation.
+        </p>
       </div>
     </section>
   );
