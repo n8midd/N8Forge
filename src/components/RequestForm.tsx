@@ -1,12 +1,15 @@
 "use client";
 
+import Link from "next/link";
 import { FormEvent, useState } from "react";
 import {
   contact,
   CTA,
   initialIntake,
   owner,
+  packageOptions,
   type IntakeValues,
+  type PackageValue,
 } from "../lib/contact";
 
 const fieldClass =
@@ -116,7 +119,7 @@ export function RequestForm() {
 
         <form
           onSubmit={onSubmit}
-          className="border border-steel-light/60 bg-white p-6 shadow-sm md:p-8"
+          className="relative border border-steel-light/60 bg-white p-6 shadow-sm md:p-8"
         >
           {submitted ? (
             <div className="py-6">
@@ -133,19 +136,26 @@ export function RequestForm() {
                     <span className="font-medium text-charcoal">{values.phone}</span>
                   </>
                 ) : null}
-                .
+                . A confirmation email is on its way.
               </p>
             </div>
           ) : (
             <div className="space-y-4">
-              <p className="text-sm text-steel">
-                Looking at{" "}
-                <span className="font-medium text-charcoal">
-                  Starter ($400), Growth ($750), or Professional ($1,000)
-                </span>
-                ? Mention which package you prefer in &ldquo;What do you
-                need?&rdquo;
-              </p>
+              {/* Honeypot — leave empty (hidden from real users) */}
+              <div className="pointer-events-none absolute -left-[9999px] top-0 h-0 w-0 overflow-hidden opacity-0">
+                <label>
+                  Website
+                  <input
+                    type="text"
+                    name="website"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    value={values.website}
+                    onChange={(e) => update("website", e.target.value)}
+                  />
+                </label>
+              </div>
+
               <div className="grid gap-4 sm:grid-cols-2">
                 <label className="block text-sm">
                   <span className="mb-1.5 block font-medium text-charcoal">Name</span>
@@ -195,6 +205,27 @@ export function RequestForm() {
 
               <label className="block text-sm">
                 <span className="mb-1.5 block font-medium text-charcoal">
+                  Package interest
+                </span>
+                <select
+                  name="package"
+                  className={fieldClass}
+                  value={values.package}
+                  onChange={(e) =>
+                    update("package", e.target.value as PackageValue | "")
+                  }
+                >
+                  <option value="">Select a package…</option>
+                  {packageOptions.map((opt) => (
+                    <option key={opt.value} value={opt.value}>
+                      {opt.label}
+                    </option>
+                  ))}
+                </select>
+              </label>
+
+              <label className="block text-sm">
+                <span className="mb-1.5 block font-medium text-charcoal">
                   What do you need?
                 </span>
                 <textarea
@@ -221,6 +252,15 @@ export function RequestForm() {
               >
                 {submitting ? "Sending…" : CTA.label}
               </button>
+
+              <p className="text-xs text-steel">
+                By submitting, you agree we may use your details to respond to this
+                request. See the{" "}
+                <Link href="/privacy" className="font-medium text-primary hover:text-primary-light">
+                  privacy policy
+                </Link>
+                .
+              </p>
             </div>
           )}
         </form>

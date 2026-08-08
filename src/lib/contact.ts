@@ -1,4 +1,5 @@
-export const SITE_URL = "https://n8-forge.vercel.app";
+export const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://n8-forge.vercel.app";
 
 export const CTA = {
   label: "Get Your Free Website Game Plan",
@@ -64,6 +65,7 @@ export const portfolio: PortfolioProject[] = [
     label: "Demo / concept",
     description:
       "Service-company concept site with clear calls to action for local customers.",
+    screenshot: "/portfolio/pool-desktop.png",
   },
   {
     name: "BBQ Business",
@@ -71,6 +73,7 @@ export const portfolio: PortfolioProject[] = [
     label: "Demo / concept",
     description:
       "Food-business concept site built for local discovery and orders of interest.",
+    screenshot: "/portfolio/bbq-desktop.png",
   },
   {
     name: "Lawn Care",
@@ -78,6 +81,22 @@ export const portfolio: PortfolioProject[] = [
     label: "Demo / concept",
     description:
       "Outdoor-services concept with booking-ready layout for homeowners.",
+    screenshot: "/portfolio/lawn-desktop.png",
+  },
+];
+
+export type Testimonial = {
+  quote: string;
+  author: string;
+  business: string;
+};
+
+export const testimonials: Testimonial[] = [
+  {
+    quote:
+      "Nathan took our Vagaro page and turned it into a website that actually feels like Lux Massage Therapy. Clients can learn about our services, find us easily on mobile, and book without confusion. It looks professional, and I finally have something I'm proud to share.",
+    author: "Valarie Middleton, LMT",
+    business: "Lux Massage Therapy",
   },
 ];
 
@@ -99,12 +118,7 @@ export const caseStudyLux = {
     "Mobile-first layout so clients can learn about services and book on phone",
     "Services, location, and contact presented as a real business — not only a scheduler",
   ],
-  testimonial: {
-    quote:
-      "Nathan took our Vagaro page and turned it into a website that actually feels like Lux Massage Therapy. Clients can learn about our services, find us easily on mobile, and book without confusion. It looks professional, and I finally have something I'm proud to share.",
-    author: "Valarie Middleton, LMT",
-    business: "Lux Massage Therapy",
-  },
+  testimonial: testimonials[0],
   screenshots: {
     beforeDesktop: "/case-studies/lux/before-desktop.png",
     beforeMobile: "/case-studies/lux/before-mobile.png",
@@ -113,12 +127,25 @@ export const caseStudyLux = {
   },
 } as const;
 
+export const packageOptions = [
+  { value: "starter", label: "Starter Website ($400)" },
+  { value: "growth", label: "Growth Website ($750)" },
+  { value: "professional", label: "Professional Website ($1,000)" },
+  { value: "care", label: "Monthly Care ($49/mo)" },
+  { value: "unsure", label: "Not sure yet" },
+] as const;
+
+export type PackageValue = (typeof packageOptions)[number]["value"];
+
 export type IntakeValues = {
   name: string;
   business: string;
   email: string;
   phone: string;
   need: string;
+  package: PackageValue | "";
+  /** Honeypot — must remain empty for real humans. */
+  website: string;
 };
 
 export const initialIntake: IntakeValues = {
@@ -127,10 +154,27 @@ export const initialIntake: IntakeValues = {
   email: "",
   phone: "",
   need: "",
+  package: "",
+  website: "",
 };
 
+const packageLabels: Record<PackageValue, string> = {
+  starter: "Starter Website ($400)",
+  growth: "Growth Website ($750)",
+  professional: "Professional Website ($1,000)",
+  care: "Monthly Care ($49/mo)",
+  unsure: "Not sure yet",
+};
+
+export function packageLabel(value: PackageValue | ""): string {
+  if (!value) return "(none)";
+  return packageLabels[value] ?? value;
+}
+
 export function formatIntakeSubject(values: IntakeValues): string {
-  return `Website game plan — ${values.business || values.name || "New inquiry"}`;
+  // Fields are already single-line sanitized in parseIntake; keep subject short.
+  const label = (values.business || values.name || "New inquiry").slice(0, 80);
+  return `Website game plan — ${label}`;
 }
 
 export function formatIntakeBody(values: IntakeValues): string {
@@ -140,23 +184,41 @@ export function formatIntakeBody(values: IntakeValues): string {
     `Business: ${values.business}`,
     `Email: ${values.email}`,
     `Phone: ${values.phone || "(none)"}`,
+    `Package interest: ${packageLabel(values.package)}`,
     "",
     "What they need:",
     values.need || "(none)",
   ].join("\n");
 }
 
-export function isValidIntake(values: unknown): values is IntakeValues {
-  if (!values || typeof values !== "object") return false;
-  const v = values as Partial<IntakeValues>;
-  return (
-    typeof v.name === "string" &&
-    v.name.trim().length > 0 &&
-    typeof v.business === "string" &&
-    v.business.trim().length > 0 &&
-    typeof v.email === "string" &&
-    v.email.trim().length > 0 &&
-    typeof v.need === "string" &&
-    v.need.trim().length > 0
-  );
+export function formatLeadConfirmationBody(values: IntakeValues): string {
+  return [
+    `Hi ${values.name || "there"},`,
+    "",
+    "Thanks for requesting a free website game plan from N8Forge. I received your note and will personally reply within one business day.",
+    "",
+    "What you asked about:",
+    values.need || "(you can reply to this email to add more detail)",
+    "",
+    values.package
+      ? `Package interest: ${packageLabel(values.package)}`
+      : null,
+    "",
+    "No obligation and no sales pressure — just a clear recommended structure, features, and flat-rate price for your business.",
+    "",
+    `If you'd rather talk sooner, call or text me at ${owner.phone}, or reply to this email.`,
+    "",
+    "— Nathan Middleton",
+    "N8Forge · Nacogdoches, TX",
+  ]
+    .filter((line) => line !== null)
+    .join("\n");
+}
+
+export function siteHostname(): string {
+  try {
+    return new URL(SITE_URL).hostname;
+  } catch {
+    return "n8-forge.vercel.app";
+  }
 }

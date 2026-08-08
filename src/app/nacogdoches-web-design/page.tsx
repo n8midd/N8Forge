@@ -1,19 +1,32 @@
 import type { Metadata } from "next";
+import { JsonLd, serviceJsonLd } from "../../components/JsonLd";
 import { ServicePageContent } from "../../components/ServicePageContent";
 import { SiteShell } from "../../components/SiteShell";
+import { SITE_URL } from "../../lib/contact";
+
+const title = "Nacogdoches web design for local service businesses";
+const description =
+  "Custom web design for Nacogdoches and East Texas service businesses. Flat-rate packages from $400. Work directly with a local developer — free website game plan, no obligation.";
+const path = "/nacogdoches-web-design";
 
 export const metadata: Metadata = {
   title: "Nacogdoches Web Design | N8Forge",
-  description:
-    "Custom web design for Nacogdoches and East Texas service businesses. Flat-rate packages from $400. Work directly with a local developer — free website game plan, no obligation.",
+  description,
 };
 
 export default function NacogdochesWebDesignPage() {
   return (
     <SiteShell>
+      <JsonLd
+        data={serviceJsonLd({
+          name: title,
+          description,
+          url: `${SITE_URL}${path}`,
+        })}
+      />
       <ServicePageContent
         eyebrow="Nacogdoches"
-        title="Nacogdoches web design for local service businesses"
+        title={title}
         intro="If you run a service business in Nacogdoches, your website should help people call, book, or request a quote — not bury them in a template. N8Forge builds custom sites locally with straightforward pricing and one-on-one support."
         sections={[
           {

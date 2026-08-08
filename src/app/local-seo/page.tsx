@@ -1,19 +1,32 @@
 import type { Metadata } from "next";
+import { JsonLd, serviceJsonLd } from "../../components/JsonLd";
 import { ServicePageContent } from "../../components/ServicePageContent";
 import { SiteShell } from "../../components/SiteShell";
+import { SITE_URL } from "../../lib/contact";
+
+const title = "Local SEO that supports more calls and customers";
+const description =
+  "Local SEO and Google Business Profile help for East Texas businesses. Get found for the services you offer in Nacogdoches and nearby markets — on top of a solid website.";
+const path = "/local-seo";
 
 export const metadata: Metadata = {
   title: "Local SEO & Google Business Help | N8Forge East Texas",
-  description:
-    "Local SEO and Google Business Profile help for East Texas businesses. Get found for the services you offer in Nacogdoches and nearby markets — on top of a solid website.",
+  description,
 };
 
 export default function LocalSeoPage() {
   return (
     <SiteShell>
+      <JsonLd
+        data={serviceJsonLd({
+          name: title,
+          description,
+          url: `${SITE_URL}${path}`,
+        })}
+      />
       <ServicePageContent
         eyebrow="Local visibility"
-        title="Local SEO that supports more calls and customers"
+        title={title}
         intro="A website alone is not enough if people cannot find you on Google. I help East Texas service businesses show up where local customers search — Maps, Business Profile, and on-site basics that match how you actually sell."
         sections={[
           {

@@ -1,4 +1,5 @@
 import { ImageResponse } from "next/og";
+import { siteHostname } from "../lib/contact";
 
 export const alt = "N8Forge — Custom Websites for East Texas Service Businesses";
 export const size = {
@@ -8,6 +9,8 @@ export const size = {
 export const contentType = "image/png";
 
 export default function OpenGraphImage() {
+  const hostname = siteHostname();
+
   return new ImageResponse(
     (
       <div
@@ -69,7 +72,7 @@ export default function OpenGraphImage() {
             fontWeight: 700,
           }}
         >
-          n8-forge.vercel.app
+          {hostname}
           · Nacogdoches, TX
         </div>
       </div>

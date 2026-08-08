@@ -10,6 +10,7 @@ const footerLinks = [
   { href: "/website-redesign", label: "Website redesign" },
   { href: "/#pricing", label: "Pricing" },
   { href: "/#contact", label: "Contact" },
+  { href: "/privacy", label: "Privacy" },
 ] as const;
 
 export function Footer() {

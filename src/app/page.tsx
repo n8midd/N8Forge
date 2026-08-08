@@ -9,6 +9,7 @@ import { HowItWorks } from "../components/HowItWorks";
 import { MobileCtaBar } from "../components/MobileCtaBar";
 import { Pricing } from "../components/Pricing";
 import { RequestForm } from "../components/RequestForm";
+import { Testimonials } from "../components/Testimonials";
 import { Work } from "../components/Work";
 
 export default function Home() {
@@ -19,6 +20,7 @@ export default function Home() {
         <Hero />
         <Work />
         <CaseStudy />
+        <Testimonials />
         <HowItWorks />
         <Pricing />
         <Extras />

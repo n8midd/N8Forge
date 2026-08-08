@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import { Source_Sans_3, Syne } from "next/font/google";
+import { JsonLd, localBusinessJsonLd } from "../components/JsonLd";
+import { SITE_URL } from "../lib/contact";
 import "./globals.css";
 
 const syne = Syne({
@@ -16,7 +18,7 @@ const sourceSans = Source_Sans_3({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://n8-forge.vercel.app"),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "N8Forge — Websites That Help East Texas Businesses Get Customers",
     template: "%s | N8Forge",
@@ -32,7 +34,7 @@ export const metadata: Metadata = {
     title: "N8Forge — More Calls, Bookings & Customers for East Texas Businesses",
     description:
       "Custom-built in Nacogdoches. Pricing from $400 without agency overhead. Free website game plan with structure, features, and flat rate.",
-    url: "https://n8-forge.vercel.app",
+    url: SITE_URL,
     siteName: "N8Forge",
     locale: "en_US",
     type: "website",
@@ -56,6 +58,7 @@ export default function RootLayout({
       className={`${syne.variable} ${sourceSans.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-sans">
+        <JsonLd data={localBusinessJsonLd()} />
         {children}
         <Analytics />
       </body>

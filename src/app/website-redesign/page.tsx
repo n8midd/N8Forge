@@ -1,19 +1,32 @@
 import type { Metadata } from "next";
+import { JsonLd, serviceJsonLd } from "../../components/JsonLd";
 import { ServicePageContent } from "../../components/ServicePageContent";
 import { SiteShell } from "../../components/SiteShell";
+import { SITE_URL } from "../../lib/contact";
+
+const title = "Website redesign when your current site is holding you back";
+const description =
+  "Redesign outdated or template websites for East Texas service businesses. Keep your domain and booking tools — get a modern site that converts. Free game plan, flat pricing.";
+const path = "/website-redesign";
 
 export const metadata: Metadata = {
   title: "Website Redesign for Local Businesses | N8Forge",
-  description:
-    "Redesign outdated or template websites for East Texas service businesses. Keep your domain and booking tools — get a modern site that converts. Free game plan, flat pricing.",
+  description,
 };
 
 export default function WebsiteRedesignPage() {
   return (
     <SiteShell>
+      <JsonLd
+        data={serviceJsonLd({
+          name: title,
+          description,
+          url: `${SITE_URL}${path}`,
+        })}
+      />
       <ServicePageContent
         eyebrow="Redesign"
-        title="Website redesign when your current site is holding you back"
+        title={title}
         intro="Many businesses already have a site — outdated design, hard to update, slow on mobile, or stuck on a generic booking page. A redesign keeps what works (domain, reviews, booking systems) and rebuilds the experience customers see first."
         sections={[
           {
