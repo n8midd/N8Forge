@@ -17,23 +17,29 @@ const sourceSans = Source_Sans_3({
   weight: ["400", "500", "600", "700"],
 });
 
+const defaultTitle =
+  "Websites That Help East Texas Businesses Get Customers";
+const defaultDescription =
+  "Custom websites for East Texas service businesses in Nacogdoches. Flat pricing from $400. Work directly with the developer. Free website game plan — no obligation.";
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "N8Forge — Websites That Help East Texas Businesses Get Customers",
+    default: `${defaultTitle} | N8Forge`,
     template: "%s | N8Forge",
   },
-  description:
-    "Custom websites for East Texas service businesses in Nacogdoches. Flat pricing from $400. Work directly with the developer. Free website game plan — no obligation.",
+  description: defaultDescription,
   applicationName: "N8Forge",
   icons: {
     icon: "/logo.png",
     apple: "/logo.png",
   },
+  alternates: {
+    canonical: SITE_URL,
+  },
   openGraph: {
-    title: "N8Forge — More Calls, Bookings & Customers for East Texas Businesses",
-    description:
-      "Custom-built in Nacogdoches. Pricing from $400 without agency overhead. Free website game plan with structure, features, and flat rate.",
+    title: defaultTitle,
+    description: defaultDescription,
     url: SITE_URL,
     siteName: "N8Forge",
     locale: "en_US",
@@ -41,9 +47,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "N8Forge — East Texas websites that get results",
-    description:
-      "Custom sites from $400. Local in Nacogdoches. Free website game plan — no obligation.",
+    title: defaultTitle,
+    description: defaultDescription,
   },
 };
 
@@ -58,6 +63,9 @@ export default function RootLayout({
       className={`${syne.variable} ${sourceSans.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-sans">
+        <a href="#main" className="skip-link">
+          Skip to main content
+        </a>
         <JsonLd data={localBusinessJsonLd()} />
         {children}
         <Analytics />

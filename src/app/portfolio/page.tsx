@@ -1,21 +1,22 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { SiteShell } from "../../components/SiteShell";
 import { CTA, portfolio } from "../../lib/contact";
+import { pageMetadata } from "../../lib/metadata";
 
-export const metadata: Metadata = {
-  title: "Portfolio — Client Sites & Demo Concepts | N8Forge",
+export const metadata = pageMetadata({
+  title: "Portfolio — Client Sites & Demo Concepts",
   description:
     "See client websites and clearly labeled demo concepts from N8Forge in Nacogdoches, TX. Real work first — demos never presented as paid clients.",
-};
+  path: "/portfolio",
+});
 
 export default function PortfolioPage() {
   return (
     <SiteShell>
       <section className="bg-off-white py-16 md:py-24">
         <div className="mx-auto max-w-6xl px-6 md:px-8">
-          <p className="text-sm font-semibold uppercase tracking-[0.12em] text-ember">
+          <p className="text-sm font-semibold uppercase tracking-[0.12em] text-ember-ink">
             Portfolio
           </p>
           <h1 className="mt-3 font-display text-3xl font-bold tracking-tight text-charcoal md:text-5xl">
@@ -33,7 +34,7 @@ export default function PortfolioPage() {
                   href={project.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex h-full flex-col border border-steel-light/60 bg-white"
+                  className="group flex h-full flex-col border border-steel-light/60 bg-white focus-visible:outline-offset-2"
                 >
                   {project.screenshot ? (
                     <div className="relative aspect-[16/10] overflow-hidden border-b border-steel-light/60">
@@ -55,13 +56,14 @@ export default function PortfolioPage() {
                   <div className="p-5">
                     <span
                       className={`text-xs font-semibold uppercase tracking-wide ${
-                        project.label === "Client site" ? "text-ember" : "text-steel"
+                        project.label === "Client site" ? "text-ember-ink" : "text-steel"
                       }`}
                     >
                       {project.label}
                     </span>
-                    <p className="mt-2 font-display text-xl font-semibold text-charcoal group-hover:text-ember">
+                    <p className="mt-2 font-display text-xl font-semibold text-charcoal group-hover:text-ember-ink">
                       {project.name}
+                      <span className="sr-only"> (opens in a new tab)</span>
                     </p>
                     <p className="mt-2 text-sm text-steel">{project.description}</p>
                   </div>
@@ -72,7 +74,7 @@ export default function PortfolioPage() {
 
           <Link
             href={CTA.href}
-            className="mt-12 inline-flex bg-ember px-6 py-3 text-sm font-semibold text-white hover:bg-ember-deep"
+            className="mt-12 inline-flex bg-ember px-6 py-3 text-sm font-semibold text-charcoal hover:bg-ember-deep hover:text-charcoal"
           >
             {CTA.label}
           </Link>

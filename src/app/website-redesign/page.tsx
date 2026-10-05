@@ -1,18 +1,19 @@
-import type { Metadata } from "next";
 import { JsonLd, serviceJsonLd } from "../../components/JsonLd";
 import { ServicePageContent } from "../../components/ServicePageContent";
 import { SiteShell } from "../../components/SiteShell";
-import { SITE_URL } from "../../lib/contact";
+import { SITE_URL, caseStudyLux } from "../../lib/contact";
+import { pageMetadata } from "../../lib/metadata";
 
 const title = "Website redesign when your current site is holding you back";
 const description =
   "Redesign outdated or template websites for East Texas service businesses. Keep your domain and booking tools — get a modern site that converts. Free game plan, flat pricing.";
 const path = "/website-redesign";
 
-export const metadata: Metadata = {
-  title: "Website Redesign for Local Businesses | N8Forge",
+export const metadata = pageMetadata({
+  title: "Website Redesign for Local Businesses",
   description,
-};
+  path,
+});
 
 export default function WebsiteRedesignPage() {
   return (
@@ -46,6 +47,14 @@ export default function WebsiteRedesignPage() {
             body: "Lux Massage Therapy moved from a Vagaro template page to a branded site with the same booking backend embedded as a clear next step. That pattern works for many local services: better marketing site, familiar tools for appointments.",
           },
         ]}
+        proof={{
+          body: "Before and after for Lux Massage Therapy: same booking tools, a site that looks like the business.",
+          imageSrc: caseStudyLux.screenshots.afterDesktop,
+          imageAlt: "Lux Massage Therapy custom website after redesign",
+          href: caseStudyLux.afterUrl,
+          hrefLabel: "Visit the redesigned site",
+          external: true,
+        }}
       />
     </SiteShell>
   );

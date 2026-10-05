@@ -13,7 +13,7 @@ import {
 } from "../lib/contact";
 
 const fieldClass =
-  "w-full border border-steel-light bg-white px-3 py-2.5 text-charcoal outline-none transition-colors placeholder:text-steel focus:border-primary-light";
+  "w-full border border-steel-light bg-white px-3 py-2.5 text-charcoal outline-none transition-colors placeholder:text-steel focus:border-primary-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-light";
 
 export function RequestForm() {
   const [values, setValues] = useState<IntakeValues>(initialIntake);
@@ -69,19 +69,19 @@ export function RequestForm() {
           <div className="mt-8 flex flex-wrap gap-3">
             <a
               href={contact.phoneHref}
-              className="border border-charcoal px-4 py-2 text-sm font-semibold text-charcoal transition-colors hover:border-ember hover:bg-ember hover:text-white"
+              className="border border-charcoal px-4 py-2 text-sm font-semibold text-charcoal transition-colors hover:border-ember hover:bg-ember hover:text-charcoal"
             >
               Call {owner.name.split(" ")[0]}
             </a>
             <a
               href={contact.smsHref}
-              className="border border-charcoal px-4 py-2 text-sm font-semibold text-charcoal transition-colors hover:border-ember hover:bg-ember hover:text-white"
+              className="border border-charcoal px-4 py-2 text-sm font-semibold text-charcoal transition-colors hover:border-ember hover:bg-ember hover:text-charcoal"
             >
               Text {owner.name.split(" ")[0]}
             </a>
             <a
               href={`mailto:${contact.email}`}
-              className="border border-charcoal px-4 py-2 text-sm font-semibold text-charcoal transition-colors hover:border-ember hover:bg-ember hover:text-white"
+              className="border border-charcoal px-4 py-2 text-sm font-semibold text-charcoal transition-colors hover:border-ember hover:bg-ember hover:text-charcoal"
             >
               Email
             </a>
@@ -141,24 +141,24 @@ export function RequestForm() {
             </div>
           ) : (
             <div className="space-y-4">
-              {/* Honeypot — leave empty (hidden from real users) */}
-              <div className="pointer-events-none absolute -left-[9999px] top-0 h-0 w-0 overflow-hidden opacity-0">
-                <label>
-                  Website
-                  <input
-                    type="text"
-                    name="website"
-                    tabIndex={-1}
-                    autoComplete="off"
-                    value={values.website}
-                    onChange={(e) => update("website", e.target.value)}
-                  />
-                </label>
+              <p className="text-xs text-steel">
+                Required fields are marked with an asterisk (*).
+              </p>
+
+              <div hidden aria-hidden="true" inert>
+                <input
+                  type="text"
+                  name="website"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={values.website}
+                  onChange={(e) => update("website", e.target.value)}
+                />
               </div>
 
               <div className="grid gap-4 sm:grid-cols-2">
                 <label className="block text-sm">
-                  <span className="mb-1.5 block font-medium text-charcoal">Name</span>
+                  <span className="mb-1.5 block font-medium text-charcoal">Name *</span>
                   <input
                     required
                     name="name"
@@ -169,7 +169,9 @@ export function RequestForm() {
                   />
                 </label>
                 <label className="block text-sm">
-                  <span className="mb-1.5 block font-medium text-charcoal">Business</span>
+                  <span className="mb-1.5 block font-medium text-charcoal">
+                    Business *
+                  </span>
                   <input
                     required
                     name="business"
@@ -179,7 +181,7 @@ export function RequestForm() {
                   />
                 </label>
                 <label className="block text-sm">
-                  <span className="mb-1.5 block font-medium text-charcoal">Email</span>
+                  <span className="mb-1.5 block font-medium text-charcoal">Email *</span>
                   <input
                     required
                     type="email"
@@ -191,7 +193,9 @@ export function RequestForm() {
                   />
                 </label>
                 <label className="block text-sm">
-                  <span className="mb-1.5 block font-medium text-charcoal">Phone</span>
+                  <span className="mb-1.5 block font-medium text-charcoal">
+                    Phone (optional)
+                  </span>
                   <input
                     type="tel"
                     name="phone"
@@ -205,7 +209,7 @@ export function RequestForm() {
 
               <label className="block text-sm">
                 <span className="mb-1.5 block font-medium text-charcoal">
-                  Package interest
+                  Package interest (optional)
                 </span>
                 <select
                   name="package"
@@ -226,7 +230,7 @@ export function RequestForm() {
 
               <label className="block text-sm">
                 <span className="mb-1.5 block font-medium text-charcoal">
-                  What do you need?
+                  What do you need? *
                 </span>
                 <textarea
                   required
@@ -240,7 +244,7 @@ export function RequestForm() {
               </label>
 
               {error ? (
-                <p className="text-sm text-ember" role="alert">
+                <p className="text-sm text-ember-ink" role="alert">
                   {error}
                 </p>
               ) : null}
@@ -248,7 +252,7 @@ export function RequestForm() {
               <button
                 type="submit"
                 disabled={submitting}
-                className="bg-ember px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-ember-deep disabled:cursor-not-allowed disabled:opacity-60"
+                className="bg-ember px-6 py-3 text-sm font-semibold text-charcoal transition-colors hover:bg-ember-deep hover:text-charcoal disabled:cursor-not-allowed disabled:opacity-60"
               >
                 {submitting ? "Sending…" : CTA.label}
               </button>
@@ -258,6 +262,10 @@ export function RequestForm() {
                 request. See the{" "}
                 <Link href="/privacy" className="font-medium text-primary hover:text-primary-light">
                   privacy policy
+                </Link>{" "}
+                and{" "}
+                <Link href="/terms" className="font-medium text-primary hover:text-primary-light">
+                  terms
                 </Link>
                 .
               </p>

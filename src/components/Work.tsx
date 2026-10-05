@@ -6,7 +6,7 @@ export function Work() {
   return (
     <section id="work" className="scroll-mt-8 bg-surface py-20 md:py-28">
       <div className="mx-auto max-w-6xl px-6 md:px-8">
-        <p className="text-sm font-semibold uppercase tracking-[0.12em] text-ember">
+        <p className="text-sm font-semibold uppercase tracking-[0.12em] text-ember-ink">
           Proof
         </p>
         <h2 className="mt-2 font-display text-3xl font-bold tracking-tight text-charcoal md:text-4xl">
@@ -47,14 +47,15 @@ export function Work() {
                   <span
                     className={`w-fit text-xs font-semibold uppercase tracking-wide ${
                       project.label === "Client site"
-                        ? "text-ember"
+                        ? "text-ember-ink"
                         : "text-steel"
                     }`}
                   >
                     {project.label}
                   </span>
-                  <span className="mt-2 font-display text-xl font-semibold text-charcoal transition-colors group-hover:text-ember">
+                  <span className="mt-2 font-display text-xl font-semibold text-charcoal transition-colors group-hover:text-ember-ink">
                     {project.name}
+                    <span className="sr-only"> (opens in a new tab)</span>
                   </span>
                   {project.location ? (
                     <span className="mt-1 text-sm text-steel">{project.location}</span>
@@ -62,7 +63,7 @@ export function Work() {
                   <p className="mt-3 flex-1 text-sm leading-relaxed text-neutral">
                     {project.description}
                   </p>
-                  <span className="mt-4 text-sm font-semibold text-ember">
+                  <span className="mt-4 text-sm font-semibold text-ember-ink">
                     Open site →
                   </span>
                 </div>

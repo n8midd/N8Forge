@@ -11,6 +11,7 @@ const footerLinks = [
   { href: "/#pricing", label: "Pricing" },
   { href: "/#contact", label: "Contact" },
   { href: "/privacy", label: "Privacy" },
+  { href: "/terms", label: "Terms" },
 ] as const;
 
 export function Footer() {
@@ -30,12 +31,12 @@ export function Footer() {
             <p className="mt-2 text-sm">
               <a
                 href={`mailto:${owner.email}`}
-                className="transition-colors hover:text-ember"
+                className="transition-colors hover:text-off-white"
               >
                 {owner.email}
               </a>
-              <span className="mx-2 text-steel">·</span>
-              <a href={owner.phoneHref} className="transition-colors hover:text-ember">
+              <span className="mx-2 text-steel-light">·</span>
+              <a href={owner.phoneHref} className="transition-colors hover:text-off-white">
                 {owner.phone}
               </a>
             </p>
@@ -56,7 +57,7 @@ export function Footer() {
             </ul>
           </nav>
         </div>
-        <p className="mt-10 text-sm text-steel">© {year} N8Forge</p>
+        <p className="mt-10 text-sm text-steel-light">© {year} N8Forge</p>
       </div>
     </footer>
   );

@@ -9,6 +9,7 @@ const paths = [
   "/local-seo",
   "/website-redesign",
   "/privacy",
+  "/terms",
 ] as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {

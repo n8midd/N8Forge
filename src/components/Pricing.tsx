@@ -110,7 +110,7 @@ export function Pricing() {
               </p>
               <a
                 href="#contact"
-                className="mt-8 inline-flex w-fit border border-charcoal px-4 py-2 text-sm font-semibold text-charcoal transition-colors hover:border-ember hover:bg-ember hover:text-off-white"
+                className="mt-8 inline-flex w-fit border border-charcoal px-4 py-2 text-sm font-semibold text-charcoal transition-colors hover:border-ember hover:bg-ember hover:text-charcoal"
               >
                 {CTA.label}
               </a>
@@ -119,7 +119,7 @@ export function Pricing() {
         </div>
 
         <div className="mt-16 border-t border-steel-light/60 pt-12">
-          <p className="text-sm font-semibold uppercase tracking-[0.12em] text-ember">
+          <p className="text-sm font-semibold uppercase tracking-[0.12em] text-ember-ink">
             Add-on
           </p>
           <h3 className="mt-2 font-display text-2xl font-bold text-charcoal md:text-3xl">
@@ -142,7 +142,7 @@ export function Pricing() {
 
           <a
             href="#contact"
-            className="mt-8 inline-flex w-fit border border-charcoal px-4 py-2 text-sm font-semibold text-charcoal transition-colors hover:border-ember hover:bg-ember hover:text-off-white"
+            className="mt-8 inline-flex w-fit border border-charcoal px-4 py-2 text-sm font-semibold text-charcoal transition-colors hover:border-ember hover:bg-ember hover:text-charcoal"
           >
             {CTA.label}
           </a>

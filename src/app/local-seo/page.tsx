@@ -1,18 +1,19 @@
-import type { Metadata } from "next";
 import { JsonLd, serviceJsonLd } from "../../components/JsonLd";
 import { ServicePageContent } from "../../components/ServicePageContent";
 import { SiteShell } from "../../components/SiteShell";
-import { SITE_URL } from "../../lib/contact";
+import { SITE_URL, caseStudyArreguin } from "../../lib/contact";
+import { pageMetadata } from "../../lib/metadata";
 
 const title = "Local SEO that supports more calls and customers";
 const description =
   "Local SEO and Google Business Profile help for East Texas businesses. Get found for the services you offer in Nacogdoches and nearby markets — on top of a solid website.";
 const path = "/local-seo";
 
-export const metadata: Metadata = {
-  title: "Local SEO & Google Business Help | N8Forge East Texas",
+export const metadata = pageMetadata({
+  title: "Local SEO & Google Business Help",
   description,
-};
+  path,
+});
 
 export default function LocalSeoPage() {
   return (
@@ -46,6 +47,14 @@ export default function LocalSeoPage() {
             body: "Local SEO is ongoing, not a magic once-and-done switch. Rankings depend on competition, reviews, consistency, and quality of the site. I'll be direct about what is realistic for your niche and town.",
           },
         ]}
+        proof={{
+          body: "A clear local site helps Maps and Business Profile traffic convert. Arreguin HR Consulting went from no website to dedicated pages for East Texas, Nacogdoches, and Lufkin — with a path to start a consultation.",
+          imageSrc: caseStudyArreguin.screenshots.afterDesktop,
+          imageAlt: "Arreguin HR Consulting custom website",
+          href: caseStudyArreguin.afterUrl,
+          hrefLabel: "Visit the live client site",
+          external: true,
+        }}
       />
     </SiteShell>
   );

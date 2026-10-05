@@ -7,7 +7,9 @@ export function SiteShell({ children }: { children: ReactNode }) {
   return (
     <>
       <Header variant="page" />
-      <main className="flex-1">{children}</main>
+      <main id="main" className="flex-1">
+        {children}
+      </main>
       <Footer />
       <MobileCtaBar />
     </>

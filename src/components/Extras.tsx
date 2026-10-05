@@ -1,14 +1,17 @@
-const extras = [
-  "Google Business Profile optimization",
-  "Local SEO",
-  "Contact forms",
-  "Appointment booking",
-  "Review management",
-  "Monthly analytics reports",
-  "Website maintenance",
-  "Performance optimization",
-  "Custom QR Codes",
-] as const;
+import Link from "next/link";
+
+const extras: { label: string; href?: string }[] = [
+  { label: "Google Business Profile optimization", href: "/local-seo" },
+  { label: "Local SEO", href: "/local-seo" },
+  { label: "Contact forms" },
+  { label: "Appointment booking" },
+  { label: "Review management" },
+  { label: "Monthly analytics reports" },
+  { label: "Website maintenance" },
+  { label: "Performance optimization" },
+  { label: "Website redesign", href: "/website-redesign" },
+  { label: "Custom QR Codes" },
+];
 
 export function Extras() {
   return (
@@ -25,11 +28,20 @@ export function Extras() {
         <ul className="mt-12 grid gap-x-10 gap-y-4 sm:grid-cols-2">
           {extras.map((item) => (
             <li
-              key={item}
+              key={item.label}
               className="flex items-start gap-3 border-b border-steel-light/50 py-3 text-charcoal"
             >
               <span className="mt-2 h-1.5 w-1.5 shrink-0 bg-ember" aria-hidden />
-              {item}
+              {item.href ? (
+                <Link
+                  href={item.href}
+                  className="font-medium text-charcoal underline-offset-2 hover:text-ember-ink hover:underline"
+                >
+                  {item.label}
+                </Link>
+              ) : (
+                item.label
+              )}
             </li>
           ))}
         </ul>

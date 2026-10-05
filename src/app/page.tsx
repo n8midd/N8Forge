@@ -11,15 +11,25 @@ import { Pricing } from "../components/Pricing";
 import { RequestForm } from "../components/RequestForm";
 import { Testimonials } from "../components/Testimonials";
 import { Work } from "../components/Work";
+import { caseStudyArreguin, caseStudyLux } from "../lib/contact";
+import { pageMetadata } from "../lib/metadata";
+
+export const metadata = pageMetadata({
+  title: "Websites That Help East Texas Businesses Get Customers",
+  description:
+    "Custom websites for East Texas service businesses in Nacogdoches. Flat pricing from $400. Work directly with the developer. Free website game plan — no obligation.",
+  path: "/",
+});
 
 export default function Home() {
   return (
     <>
       <Header variant="hero" />
-      <main className="flex-1">
+      <main id="main" className="flex-1">
         <Hero />
         <Work />
-        <CaseStudy />
+        <CaseStudy study={caseStudyLux} />
+        <CaseStudy study={caseStudyArreguin} tone="surface" />
         <Testimonials />
         <HowItWorks />
         <Pricing />

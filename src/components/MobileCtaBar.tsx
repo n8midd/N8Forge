@@ -18,7 +18,7 @@ export function MobileCtaBar() {
         </a>
         <a
           href={CTA.href}
-          className="flex-[1.4] bg-ember py-2.5 text-center text-xs font-semibold text-white"
+          className="flex-[1.4] bg-ember py-2.5 text-center text-xs font-semibold text-charcoal"
         >
           Free Game Plan
         </a>
