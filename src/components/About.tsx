@@ -4,7 +4,7 @@ export function About() {
   return (
     <section id="about" className="scroll-mt-8 bg-off-white py-20 md:py-28">
       <div className="mx-auto max-w-6xl px-6 md:px-8">
-        <p className="text-sm font-semibold uppercase tracking-[0.12em] text-ember">
+        <p className="text-sm font-semibold uppercase tracking-[0.12em] text-ember-ink">
           About
         </p>
         <h2 className="mt-2 font-display text-3xl font-bold tracking-tight text-charcoal md:text-4xl">
@@ -55,6 +55,7 @@ export function About() {
                   className="font-medium text-charcoal transition-colors hover:text-primary"
                 >
                   {item.label}
+                  <span className="sr-only"> (opens in a new tab)</span>
                 </a>
               ))}
             </dd>

@@ -1,18 +1,19 @@
-import type { Metadata } from "next";
 import { JsonLd, serviceJsonLd } from "../../components/JsonLd";
 import { ServicePageContent } from "../../components/ServicePageContent";
 import { SiteShell } from "../../components/SiteShell";
-import { SITE_URL } from "../../lib/contact";
+import { SITE_URL, caseStudyLux } from "../../lib/contact";
+import { pageMetadata } from "../../lib/metadata";
 
 const title = "Nacogdoches web design for local service businesses";
 const description =
   "Custom web design for Nacogdoches and East Texas service businesses. Flat-rate packages from $400. Work directly with a local developer — free website game plan, no obligation.";
 const path = "/nacogdoches-web-design";
 
-export const metadata: Metadata = {
-  title: "Nacogdoches Web Design | N8Forge",
+export const metadata = pageMetadata({
+  title: "Nacogdoches Web Design",
   description,
-};
+  path,
+});
 
 export default function NacogdochesWebDesignPage() {
   return (
@@ -43,9 +44,17 @@ export default function NacogdochesWebDesignPage() {
           },
           {
             heading: "Real client work nearby",
-            body: "See the Lux Massage Therapy project — a Nacogdoches client site that moved from a generic booking template to a branded site with clear services and integrated booking. Demos are labeled as demos on the portfolio page.",
+            body: "Lux Massage Therapy moved from a generic booking template to a branded site with a clear path to book. Arreguin HR Consulting had no website and very little internet visibility — we built the first professional site, local pages, and a consultation path. Demos are labeled as demos on the portfolio page.",
           },
         ]}
+        proof={{
+          body: "Lux Massage Therapy in Nacogdoches moved from a generic booking page to a branded site with a clear path to book.",
+          imageSrc: caseStudyLux.screenshots.afterDesktop,
+          imageAlt: "Lux Massage Therapy custom website",
+          href: caseStudyLux.afterUrl,
+          hrefLabel: "Visit the live client site",
+          external: true,
+        }}
       />
     </SiteShell>
   );

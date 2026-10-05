@@ -1,25 +1,26 @@
-import type { Metadata } from "next";
 import { SiteShell } from "../../components/SiteShell";
 import { owner } from "../../lib/contact";
+import { pageMetadata } from "../../lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Privacy Policy",
   description:
-    "How N8Forge collects and uses contact information from website game plan requests.",
-};
+    "How N8Forge collects and uses contact information from website game plan requests, calls, and texts.",
+  path: "/privacy",
+});
 
 export default function PrivacyPage() {
   return (
     <SiteShell>
       <article className="bg-off-white py-16 md:py-24">
         <div className="mx-auto max-w-3xl px-6 md:px-8">
-          <p className="text-sm font-semibold uppercase tracking-[0.12em] text-ember">
+          <p className="text-sm font-semibold uppercase tracking-[0.12em] text-ember-ink">
             Legal
           </p>
           <h1 className="mt-3 font-display text-3xl font-bold tracking-tight text-charcoal md:text-5xl">
             Privacy policy
           </h1>
-          <p className="mt-5 text-sm text-steel">Last updated: August 2026</p>
+          <p className="mt-5 text-sm text-steel">Last updated: October 2026</p>
 
           <div className="mt-10 space-y-8 text-base leading-relaxed text-neutral">
             <section>
@@ -29,7 +30,7 @@ export default function PrivacyPage() {
               <p className="mt-3">
                 N8Forge is operated by {owner.name} in {owner.location}. This
                 policy explains how contact details submitted through this website
-                are handled.
+                or shared by phone or text are handled.
               </p>
             </section>
 
@@ -42,6 +43,11 @@ export default function PrivacyPage() {
                 information you provide: name, business name, email address,
                 phone number (optional), package interest, and a short description
                 of what you need.
+              </p>
+              <p className="mt-3">
+                If you call or text the number on this site, we also receive the
+                phone number you use and whatever you choose to share in that
+                conversation.
               </p>
             </section>
 
@@ -85,9 +91,9 @@ export default function PrivacyPage() {
                 How long we keep it
               </h2>
               <p className="mt-3">
-                Inquiry emails are retained as long as needed to manage the
-                conversation and any related work, then deleted or archived in the
-                ordinary course of email management.
+                Inquiry emails and related notes are retained as long as needed to
+                manage the conversation and any related work, then deleted or
+                archived in the ordinary course of email and phone management.
               </p>
             </section>
 

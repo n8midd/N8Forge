@@ -23,7 +23,7 @@ export function HowItWorks() {
   return (
     <section id="how-it-works" className="scroll-mt-8 bg-surface py-20 md:py-28">
       <div className="mx-auto max-w-6xl px-6 md:px-8">
-        <p className="text-sm font-semibold uppercase tracking-[0.12em] text-ember">
+        <p className="text-sm font-semibold uppercase tracking-[0.12em] text-ember-ink">
           Process
         </p>
         <h2 className="mt-2 font-display text-3xl font-bold tracking-tight text-charcoal md:text-4xl">
@@ -37,7 +37,7 @@ export function HowItWorks() {
         <ol className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           {steps.map((step, index) => (
             <li key={step.title} className="border-t border-steel-light/70 pt-6">
-              <span className="font-display text-sm font-semibold text-ember">
+              <span className="font-display text-sm font-semibold text-ember-ink">
                 {String(index + 1).padStart(2, "0")}
               </span>
               <h3 className="mt-3 font-display text-lg font-semibold text-charcoal">

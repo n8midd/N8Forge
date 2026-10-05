@@ -1,13 +1,14 @@
-import type { Metadata } from "next";
 import { ServicePageContent } from "../../components/ServicePageContent";
 import { SiteShell } from "../../components/SiteShell";
-import { CTA, owner } from "../../lib/contact";
+import { CTA, caseStudyArreguin, owner } from "../../lib/contact";
+import { pageMetadata } from "../../lib/metadata";
 
-export const metadata: Metadata = {
-  title: "About Nathan Middleton | N8Forge Nacogdoches",
+export const metadata = pageMetadata({
+  title: "About Nathan Middleton",
   description:
     "Meet Nathan Middleton, N8Forge owner and developer in Nacogdoches, TX. 18 years of software experience. You work directly with the person building your site.",
-};
+  path: "/about",
+});
 
 export default function AboutPage() {
   return (
@@ -30,6 +31,13 @@ export default function AboutPage() {
             body: "Primarily East Texas businesses — Nacogdoches and nearby communities — who need more calls, bookings, and customers from their site, not a generic template.",
           },
         ]}
+        proof={{
+          body: "Recent work includes Lux Massage Therapy and Arreguin HR Consulting in Nacogdoches — branded client sites built one-to-one, from a booking redesign to a first website for a new firm.",
+          imageSrc: caseStudyArreguin.screenshots.afterDesktop,
+          imageAlt: "Arreguin HR Consulting custom website",
+          href: "/portfolio",
+          hrefLabel: "See the portfolio",
+        }}
       />
     </SiteShell>
   );

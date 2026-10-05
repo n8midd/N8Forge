@@ -8,12 +8,13 @@
   /* Neutrals */
   --charcoal: #1e2228;
   --neutral: #3e454f;
-  --steel: #6b7480;
+  --steel: #4e5661;
   --steel-light: #a8b0ba;
 
   /* Accent */
   --ember: #f47b20;
   --ember-deep: #d96512;
+  --ember-ink: #9a3412;
   --accent-light: #ffc94a;
 
   /* Background */
@@ -33,6 +34,7 @@
   --color-off-white: var(--off-white);
   --color-ember: var(--ember);
   --color-ember-deep: var(--ember-deep);
+  --color-ember-ink: var(--ember-ink);
   --color-accent-light: var(--accent-light);
   --color-steel: var(--steel);
   --color-steel-light: var(--steel-light);
@@ -43,6 +45,28 @@
 
 html {
   scroll-behavior: smooth;
+}
+
+:focus-visible {
+  outline: 2px solid var(--primary-light);
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: 0;
+  z-index: 100;
+  transform: translateY(-120%);
+  background: var(--off-white);
+  color: var(--charcoal);
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.skip-link:focus {
+  transform: translateY(0.75rem);
 }
 
 body {

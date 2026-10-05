@@ -9,11 +9,11 @@ type HeaderProps = {
   variant?: "hero" | "page";
 };
 
-const homeLinks = [
+const navLinks = [
+  { href: "/portfolio", label: "Portfolio" },
+  { href: "/about", label: "About" },
   { href: "/#work", label: "Work" },
-  { href: "/#how-it-works", label: "How it works" },
   { href: "/#pricing", label: "Pricing" },
-  { href: "/#faq", label: "FAQ" },
   { href: "/#contact", label: "Contact" },
 ] as const;
 
@@ -35,18 +35,18 @@ export function Header({ variant = "hero" }: HeaderProps) {
         </Link>
 
         <nav className="hidden items-center gap-6 lg:flex" aria-label="Primary">
-          {homeLinks.map((link) => (
-            <a
+          {navLinks.map((link) => (
+            <Link
               key={link.href}
               href={link.href}
               className="text-sm font-medium text-white/80 transition-colors hover:text-white"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
           <a
             href={CTA.href}
-            className="bg-ember px-4 py-2 text-sm font-semibold text-off-white transition-colors hover:bg-ember-deep"
+            className="bg-ember px-4 py-2 text-sm font-semibold text-charcoal transition-colors hover:bg-ember-deep hover:text-charcoal"
           >
             {CTA.label}
           </a>
@@ -81,21 +81,21 @@ export function Header({ variant = "hero" }: HeaderProps) {
           aria-label="Mobile"
         >
           <ul className="flex flex-col gap-3">
-            {homeLinks.map((link) => (
+            {navLinks.map((link) => (
               <li key={link.href}>
-                <a
+                <Link
                   href={link.href}
                   className="block py-1 text-off-white"
                   onClick={() => setOpen(false)}
                 >
                   {link.label}
-                </a>
+                </Link>
               </li>
             ))}
             <li>
               <a
                 href={CTA.href}
-                className="mt-1 inline-block bg-ember px-4 py-2 text-sm font-semibold text-off-white"
+                className="mt-1 inline-block bg-ember px-4 py-2 text-sm font-semibold text-charcoal"
                 onClick={() => setOpen(false)}
               >
                 {CTA.label}

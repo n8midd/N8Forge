@@ -1,20 +1,50 @@
 import Image from "next/image";
-import { caseStudyLux } from "../lib/contact";
+import type { CaseStudyContent } from "../lib/contact";
 
-export function CaseStudy() {
-  const { screenshots, testimonial, results } = caseStudyLux;
+type CaseStudyProps = {
+  study: CaseStudyContent;
+  tone?: "off-white" | "surface";
+};
+
+function ScreenshotFrame({
+  src,
+  alt,
+  width,
+  height,
+  className,
+}: {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  className?: string;
+}) {
+  return (
+    <div className={`overflow-hidden border border-steel-light/60 bg-white ${className ?? ""}`}>
+      <Image src={src} alt={alt} width={width} height={height} className="h-auto w-full" />
+    </div>
+  );
+}
+
+export function CaseStudy({ study, tone = "off-white" }: CaseStudyProps) {
+  const { screenshots, testimonial, results, highlight } = study;
+  const hasBeforeShots = Boolean(screenshots.beforeDesktop && screenshots.beforeMobile);
+  const sectionId = study.id === "lux" ? "case-study" : `case-study-${study.id}`;
 
   return (
-    <section id="case-study" className="scroll-mt-8 bg-off-white py-20 md:py-28">
+    <section
+      id={sectionId}
+      className={`scroll-mt-8 py-20 md:py-28 ${tone === "surface" ? "bg-surface" : "bg-off-white"}`}
+    >
       <div className="mx-auto max-w-6xl px-6 md:px-8">
-        <p className="text-sm font-semibold uppercase tracking-[0.12em] text-ember">
+        <p className="text-sm font-semibold uppercase tracking-[0.12em] text-ember-ink">
           Case study
         </p>
         <h2 className="mt-2 font-display text-3xl font-bold tracking-tight text-charcoal md:text-4xl">
-          {caseStudyLux.client}
+          {study.client}
         </h2>
         <p className="mt-1 text-steel">
-          {caseStudyLux.owner} · {caseStudyLux.location}
+          {study.owner} · {study.location}
         </p>
 
         <div className="mt-10 grid gap-8 md:grid-cols-2">
@@ -23,15 +53,21 @@ export function CaseStudy() {
               The need
             </h3>
             <p className="mt-2 text-sm leading-relaxed text-neutral md:text-base">
-              {caseStudyLux.need}{" "}
-              <a
-                href={caseStudyLux.beforeUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-medium text-primary transition-colors hover:text-primary-light"
-              >
-                View original Vagaro page →
-              </a>
+              {study.need}
+              {study.beforeUrl ? (
+                <>
+                  {" "}
+                  <a
+                    href={study.beforeUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-medium text-primary transition-colors hover:text-primary-light"
+                  >
+                    {study.beforeLinkLabel ?? "View previous site →"}
+                    <span className="sr-only"> (opens in a new tab)</span>
+                  </a>
+                </>
+              ) : null}
             </p>
           </div>
           <div>
@@ -39,14 +75,15 @@ export function CaseStudy() {
               What we built
             </h3>
             <p className="mt-2 text-sm leading-relaxed text-neutral md:text-base">
-              {caseStudyLux.built}{" "}
+              {study.built}{" "}
               <a
-                href={caseStudyLux.afterUrl}
+                href={study.afterUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-medium text-primary transition-colors hover:text-primary-light"
               >
                 Visit live site →
+                <span className="sr-only"> (opens in a new tab)</span>
               </a>
             </p>
           </div>
@@ -71,79 +108,84 @@ export function CaseStudy() {
 
         <div className="mt-14">
           <h3 className="font-display text-xl font-semibold text-charcoal">
-            Before &amp; after
+            {hasBeforeShots ? "Before & after" : "Starting point & after"}
           </h3>
           <div className="mt-6 grid gap-8 lg:grid-cols-2">
-            <figure>
-              <figcaption className="mb-3 text-sm font-semibold uppercase tracking-wide text-steel">
-                Before — Vagaro template
-              </figcaption>
-              <div className="space-y-4">
-                <div className="overflow-hidden border border-steel-light/60 bg-white">
-                  <Image
-                    src={screenshots.beforeDesktop}
-                    alt="Lux Massage Therapy Vagaro page on desktop"
+            {hasBeforeShots ? (
+              <figure>
+                <figcaption className="mb-3 text-sm font-semibold uppercase tracking-wide text-steel">
+                  {screenshots.beforeCaption ?? "Before"}
+                </figcaption>
+                <div className="space-y-4">
+                  <ScreenshotFrame
+                    src={screenshots.beforeDesktop!}
+                    alt={`${study.client} previous site on desktop`}
                     width={1280}
                     height={800}
-                    className="h-auto w-full"
                   />
-                </div>
-                <div className="mx-auto max-w-[220px] overflow-hidden border border-steel-light/60 bg-white">
-                  <Image
-                    src={screenshots.beforeMobile}
-                    alt="Lux Massage Therapy Vagaro page on mobile"
+                  <ScreenshotFrame
+                    src={screenshots.beforeMobile!}
+                    alt={`${study.client} previous site on mobile`}
                     width={390}
                     height={844}
-                    className="h-auto w-full"
+                    className="mx-auto max-w-[220px]"
                   />
                 </div>
+              </figure>
+            ) : study.startingPoint ? (
+              <div className="border border-steel-light/60 bg-white p-6 md:p-8">
+                <p className="text-sm font-semibold uppercase tracking-wide text-steel">
+                  Starting point
+                </p>
+                <p className="mt-4 text-sm leading-relaxed text-neutral md:text-base">
+                  {study.startingPoint}
+                </p>
               </div>
-            </figure>
+            ) : null}
             <figure>
               <figcaption className="mb-3 text-sm font-semibold uppercase tracking-wide text-steel">
-                After — Custom N8Forge site
+                {screenshots.afterCaption ?? "After — Custom N8Forge site"}
               </figcaption>
               <div className="space-y-4">
-                <div className="overflow-hidden border border-steel-light/60 bg-white">
-                  <Image
-                    src={screenshots.afterDesktop}
-                    alt="Lux Massage Therapy custom website on desktop"
-                    width={1280}
-                    height={800}
-                    className="h-auto w-full"
-                  />
-                </div>
-                <div className="mx-auto max-w-[220px] overflow-hidden border border-steel-light/60 bg-white">
-                  <Image
-                    src={screenshots.afterMobile}
-                    alt="Lux Massage Therapy custom website on mobile"
-                    width={390}
-                    height={844}
-                    className="h-auto w-full"
-                  />
-                </div>
+                <ScreenshotFrame
+                  src={screenshots.afterDesktop}
+                  alt={`${study.client} custom website on desktop`}
+                  width={1280}
+                  height={800}
+                />
+                <ScreenshotFrame
+                  src={screenshots.afterMobile}
+                  alt={`${study.client} custom website on mobile`}
+                  width={390}
+                  height={844}
+                  className="mx-auto max-w-[220px]"
+                />
               </div>
             </figure>
           </div>
         </div>
 
-        <div className="mt-14 border border-steel-light/60 bg-white p-6 md:p-8">
-          <h3 className="font-display text-lg font-semibold text-charcoal">
-            Booking that fits the business
-          </h3>
-          <p className="mt-3 max-w-3xl text-sm leading-relaxed text-neutral md:text-base">
-            {caseStudyLux.booking}
-          </p>
-        </div>
+        {highlight ? (
+          <div className="mt-14 border border-steel-light/60 bg-white p-6 md:p-8">
+            <h3 className="font-display text-lg font-semibold text-charcoal">
+              {highlight.title}
+            </h3>
+            <p className="mt-3 max-w-3xl text-sm leading-relaxed text-neutral md:text-base">
+              {highlight.body}
+            </p>
+          </div>
+        ) : null}
 
-        <blockquote className="mt-14 border-l-4 border-ember pl-6">
-          <p className="text-lg leading-relaxed text-charcoal md:text-xl">
-            &ldquo;{testimonial.quote}&rdquo;
-          </p>
-          <footer className="mt-4 text-sm text-steel">
-            — {testimonial.author}, {testimonial.business}
-          </footer>
-        </blockquote>
+        {testimonial ? (
+          <blockquote className="mt-14 border-l-4 border-ember-ink pl-6">
+            <p className="text-lg leading-relaxed text-charcoal md:text-xl">
+              &ldquo;{testimonial.quote}&rdquo;
+            </p>
+            <footer className="mt-4 text-sm text-steel">
+              — {testimonial.author}, {testimonial.business}
+            </footer>
+          </blockquote>
+        ) : null}
       </div>
     </section>
   );

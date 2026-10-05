@@ -15,7 +15,7 @@ export function Testimonials() {
       aria-label="More client testimonials"
     >
       <div className="mx-auto max-w-6xl px-6 md:px-8">
-        <p className="text-sm font-semibold uppercase tracking-[0.12em] text-ember">
+        <p className="text-sm font-semibold uppercase tracking-[0.12em] text-ember-ink">
           More client words
         </p>
         <ul className="mt-8 grid gap-10 md:grid-cols-2">
